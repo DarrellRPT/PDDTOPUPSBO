@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("gambar\ body\ 1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px; 
+    padding: 10px; 
+    background-color: rgba(248, 249, 250, 0.8); 
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: burlywood;
+    background-color: var(--clr, burlywood);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: burlywood;
+}
+
+.button-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.button-content {
+    position: relative;
+    z-index: 1;
+}
+
+.button__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.button__text {
+    vertical-align: middle;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: burlywood;
+    color: white;
+}
