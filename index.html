@@ -39,52 +39,131 @@
     </style>
 </head>
 <body>
-    <header>
-        <img src="assets/LOGO RS.png" alt="Logo TopUp Game" class="logo">
-        <h1>Selamat Datang di TopUp Game</h1>
-        <p>Temukan item game terbaik untuk pengalaman bermain yang lebih seru!</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-end">
-            <a class="btn btn-primary" href="#" role="button">Reset Password</a>
-        </div>
-    </header>
+    <div id="root">
 
-    <main class="container mt-4">
-        <h2>Produk TopUp</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="assets/coverml.jpg" class="card-img-top" alt="Diamond Game">
-                    <div class="card-body">
-                        <h5 class="card-title">Diamond MLBB PAKET SULTAN</h5>
-                        <p class="card-text">Dapatkan lebih banyak Diamond untuk MLBB. Tingkatkan koleksi akun Anda!</p>
-                        <a href="register.html" class="btn btn-primary">TopUp Sekarang</a>         
-                     </div>
+        <header>
+            <a href="index.html">
+                <img src="assets/LOGO RS.png" alt="Logo TopUp Game" class="logo">
+            </a>
+            <h1>Selamat Datang di TopUp Game</h1>
+            <p>Temukan item game terbaik untuk pengalaman bermain yang lebih seru!</p>
+            <div class="row g-3 justify-content-end">
+                <div class="col-auto">
+                    <label for="inputUsername" class="visually-hidden">username</label>
+                    <input type="text" class="form-control" id="inputUsername" placeholder="username">
+                </div>
+                <div class="col-auto">
+                    <label for="inputPassword" class="visually-hidden">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-primary" role="button" onclick="onBuat()" id="buatBtn">Buat Akun</a>
+                    <a class="btn btn-primary" role="button" onclick="onLogin()" id="loginBtn">Masuk Akun</a>
+                    <a class="btn btn-primary" href="Recovery_acc.html" role="button" id="resetBtn">Reset Password</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="assets/coverff.jpg" class="card-img-top" alt="Diamond Game B">
-                    <div class="card-body">
-                        <h5 class="card-title">Diamond Free Fire</h5>
-                        <p class="card-text">Dapatkan 1.250 diamond untuk Free Fire. Beli item eksklusif sekarang!</p>
-                        <a href="register2.html" class="btn btn-primary">TopUp Sekarang</a>
+        </header>
+
+        <main class="container mt-4">
+            <h2>Produk TopUp</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/coverml.jpg" class="card-img-top" alt="Diamond Game">
+                        <div class="card-body">
+                            <h5 class="card-title">Diamond MLBB PAKET SULTAN</h5>
+                            <p class="card-text">Dapatkan lebih banyak Diamond untuk MLBB. Tingkatkan koleksi akun Anda! <br/><mark id="promoMl">10% off!</mark></p>
+                            <a href="register.html" class="btn btn-primary">TopUp Sekarang</a>         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/coverff.jpg" class="card-img-top" alt="Diamond Game B">
+                        <div class="card-body">
+                            <h5 class="card-title">Diamond Free Fire</h5>
+                            <p class="card-text">Dapatkan 1.250 diamond untuk Free Fire. Beli item eksklusif sekarang! <br/><mark id="promoFf">15% off!</mark></p>
+                            <a href="register2.html" class="btn btn-primary">TopUp Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/coverpubg.jpg" class="card-img-top" alt="Koin Game C">
+                        <div class="card-body">
+                            <h5 class="card-title">UC PUBG</h5>
+                            <p class="card-text">Dapatkan UC lebih besar untuk PUBG. Gunakan untuk upgrade karakter! <br/><mark id="promoPubg">5% off!</mark></p>
+                            <a href="register3.html" class="btn btn-primary">TopUp Sekarang</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="assets/coverpubg.jpg" class="card-img-top" alt="Koin Game C">
-                    <div class="card-body">
-                        <h5 class="card-title">UC PUBG</h5>
-                        <p class="card-text">Dapatkan UC lebih besar untuk PUBG. Gunakan untuk upgrade karakter!</p>
-                        <a href="register3.html" class="btn btn-primary">TopUp Sekarang</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <footer>
-        <p>&copy; topup game? PDDTOPUP aja!!</p>
-    </footer>
+        <footer>
+            <p>&copy; topup game? PDDTOPUP aja!!</p>
+        </footer>
+
+    </div>
+
+    <script type="application/javascript">
+        
+        let inputUsername = document.getElementById('inputUsername');
+        let inputPassword = document.getElementById('inputPassword');
+
+        let resetBtn = document.getElementById('resetBtn');
+        let loginBtn = document.getElementById('loginBtn');
+        let buatBtn = document.getElementById('buatBtn');
+
+        let promoMl = document.getElementById('promoMl');
+        let promoFf = document.getElementById('promoFf');
+        let promoPubg = document.getElementById('promoPubg');
+        
+        resetBtn.style.display = "none";
+        promoMl.style.display = "none";
+        promoFf.style.display = "none";
+        promoPubg.style.display = "none";
+
+        if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
+            buatBtn.style.display = "";
+        } else {
+            buatBtn.style.display = "none";
+        }
+        
+        function onBuat() {
+            if (inputUsername.value == "" && inputPassword.value == "") {
+                alert('Data tidak boleh kosong');
+            } else {
+
+                alert('Daftar berhasil');
+                
+                localStorage.setItem("username", inputUsername.value);
+                localStorage.setItem("password", inputPassword.value);
+
+                buatBtn.style.display = "none";
+            
+            }
+        }
+
+        function onLogin() {
+
+            
+            if (inputUsername.value == localStorage.getItem("username") && inputPassword.value == localStorage.getItem("password")) {
+                alert('Login berhasil');
+                
+                resetBtn.style.display = "";
+                loginBtn.style.display = "none";
+
+                inputUsername.style.display = "none";
+                inputPassword.style.display = "none";
+                
+                promoMl.style.display = "";
+                promoFf.style.display = "";
+                promoPubg.style.display = "";
+            } else {
+                alert('Password salah');
+            }
+        }
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </body>
