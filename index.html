@@ -59,6 +59,7 @@
                 <div class="col-auto">
                     <a class="btn btn-primary" role="button" onclick="onBuat()" id="buatBtn">Buat Akun</a>
                     <a class="btn btn-primary" role="button" onclick="onLogin()" id="loginBtn">Masuk Akun</a>
+                    <a class="btn btn-primary" role="button" onclick="onLogout()" id="logoutBtn">Keluar akun</a>
                     <a class="btn btn-primary" href="Recovery_acc.html" role="button" id="resetBtn">Reset Password</a>
                 </div>
             </div>
@@ -111,6 +112,7 @@
 
         let resetBtn = document.getElementById('resetBtn');
         let loginBtn = document.getElementById('loginBtn');
+        let logoutBtn = document.getElementById('logoutBtn');
         let buatBtn = document.getElementById('buatBtn');
 
         let promoMl = document.getElementById('promoMl');
@@ -118,6 +120,8 @@
         let promoPubg = document.getElementById('promoPubg');
         
         resetBtn.style.display = "none";
+        logoutBtn.style.display = "none";
+
         promoMl.style.display = "none";
         promoFf.style.display = "none";
         promoPubg.style.display = "none";
@@ -150,6 +154,7 @@
                 alert('Login berhasil');
                 
                 resetBtn.style.display = "";
+                logoutBtn.style.display = "";
                 loginBtn.style.display = "none";
 
                 inputUsername.style.display = "none";
@@ -161,6 +166,15 @@
             } else {
                 alert('Password salah');
             }
+
+        }
+
+        function onLogout() {
+            alert('Logout berhasil');
+
+            
+
+            location.reload();
         }
 
     </script>
