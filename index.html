@@ -118,62 +118,147 @@
         let promoMl = document.getElementById('promoMl');
         let promoFf = document.getElementById('promoFf');
         let promoPubg = document.getElementById('promoPubg');
-        
-        resetBtn.style.display = "none";
-        logoutBtn.style.display = "none";
 
-        promoMl.style.display = "none";
-        promoFf.style.display = "none";
-        promoPubg.style.display = "none";
-
-        if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
-            buatBtn.style.display = "";
-        } else {
-            buatBtn.style.display = "none";
-        }
-        
-        function onBuat() {
-            if (inputUsername.value == "" && inputPassword.value == "") {
-                alert('Data tidak boleh kosong');
-            } else {
-
-                alert('Daftar berhasil');
-                
-                localStorage.setItem("username", inputUsername.value);
-                localStorage.setItem("password", inputPassword.value);
-
-                buatBtn.style.display = "none";
+        function cekStatusLogin() {
             
-            }
-        }
-
-        function onLogin() {
-
-            
-            if (inputUsername.value == localStorage.getItem("username") && inputPassword.value == localStorage.getItem("password")) {
-                alert('Login berhasil');
-                
+            if (sessionStorage.getItem("isLogin") === "true") {
                 resetBtn.style.display = "";
                 logoutBtn.style.display = "";
                 loginBtn.style.display = "none";
+                buatBtn.style.display = "none";
 
                 inputUsername.style.display = "none";
                 inputPassword.style.display = "none";
-                
+
                 promoMl.style.display = "";
                 promoFf.style.display = "";
                 promoPubg.style.display = "";
             } else {
-                alert('Username atau Password salah');
+                resetBtn.style.display = "";
+                logoutBtn.style.display = "none";
+                loginBtn.style.display = "";
+
+                inputUsername.style.display = "";
+                inputPassword.style.display = "";
+
+                promoMl.style.display = "none";
+                promoFf.style.display = "none";
+                promoPubg.style.display = "none";
+                
+                if (!localStorage.getItem("username") || !localStorage.getItem("password")) {
+                    buatBtn.style.display = "";
+                } else {
+                    buatBtn.style.display = "none";
+                }
             }
 
         }
 
+        cekStatusLogin();
+
+        function onBuat() {
+            if (inputUsername.value.trim() == "" || inputPassword.value.trim() == "") {
+                alert('Username atau password tidak boleh kosong!');
+            } else {
+                alert('Daftar berhasil!');
+
+                localStorage.setItem("username", inputUsername.value);
+                localStorage.setItem("password", inputPassword.value);
+
+                cekStatusLogin();
+
+            }
+        }
+
+        function onLogin() {
+            if (inputUsername.value == localStorage.getItem("username") && inputPassword.value == localStorage.getItem("password")) {
+                alert('Login berhasil!');
+
+                sessionStorage.setItem("isLogin", "true");
+
+                cekStatusLogin();
+
+            } else {
+                alert('Username atau password salah!');
+            }
+        }
+
         function onLogout() {
-            alert('Logout berhasil');
+            alert('Logout berhasil!');
+
+            sessionStorage.removeItem("isLogin");
 
             location.reload();
         }
+        
+        // ------------------------------------
+
+        // ++++
+        // resetBtn.style.display = "none";
+        // logoutBtn.style.display = "none";
+
+        // promoMl.style.display = "none";
+        // promoFf.style.display = "none";
+        // promoPubg.style.display = "none";
+
+        // if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
+        //     buatBtn.style.display = "";
+        // } else {
+        //     buatBtn.style.display = "none";
+        // }
+        // ++++
+        
+        // function onBuat() {
+        //     if (inputUsername.value == "" && inputPassword.value == "") {
+        //         alert('Data tidak boleh kosong');
+        //     } else {
+
+        //         alert('Daftar berhasil');
+                
+        //         localStorage.setItem("username", inputUsername.value);
+        //         localStorage.setItem("password", inputPassword.value);
+
+        //         // buatBtn.style.display = "none"; +++
+                
+        //         cekStatusLogin();
+        //     }
+        // }
+
+        // function onLogin() {
+
+            
+        //     if (inputUsername.value == localStorage.getItem("username") && inputPassword.value == localStorage.getItem("password")) {
+        //         alert('Login berhasil');
+                
+        //         // +++
+        //         // resetBtn.style.display = "";
+        //         // logoutBtn.style.display = "";
+        //         // loginBtn.style.display = "none";
+
+        //         // inputUsername.style.display = "none";
+        //         // inputPassword.style.display = "none";
+                
+        //         // promoMl.style.display = "";
+        //         // promoFf.style.display = "";
+        //         // promoPubg.style.display = "";
+        //         // +++
+
+        //         sessionStorage.setItem("isLogin", "true");
+
+        //         cekStatusLogin();
+        //     } else {
+        //         alert('Username atau Password salah');
+        //     }
+
+        // }
+
+        // function onLogout() {
+        //     alert('Logout berhasil');
+
+        //     sessionStorage.removeItem("isLogin");
+
+        //     location.reload();
+        // }
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
